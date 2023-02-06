@@ -1,16 +1,16 @@
 #!/bin/bash
 
-#The system’s fully-qualified domain name (FQDN)
-echo "FQDN: $(hostname).home.arpa"
+#The purpose of this script is to display some important identity information about a computer 
 
-#The operating system name and version, identifying the Linux distro
-echo "Host Information:"
-   echo "$(hostnamectl)"
+cat<<EOF
 
-# IP addresses the machine has that are not on the 127 network
-echo "IP Addresses:"
-echo "$(hostname -I)"
+Report for $(hostname)
+======================
+FQDN : $(hostname).home.arpa
+Operating System name and Version: $(lsb_release -d | awk '{print $2, $3, $4}')
+IP Address : $(hostname -I)
+Root Filesystem Freespace: $(df -h /dev/sda3 | grep -v Avail | awk '{print $4}') 
+=======================
+ 
+EOF
 
-#The amount of space available in only the root filesystem
-echo "Root Filesystem Status:"
-echo "$(df -h /)"
