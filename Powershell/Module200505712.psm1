@@ -14,7 +14,3 @@ function get-mydisks {
 get-PhysicalDisk | Select-Object "Manufacturer","Model","SerialNumber","FirmwareRevision","Size" | format-table
 }
 
-
- 
-  
- 
